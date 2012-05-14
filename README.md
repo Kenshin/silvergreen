@@ -21,18 +21,21 @@ add silvergreen-2.0.swc to libs
    &lt;fx:Style source=&quot;style.css&quot; /&gt;
 </pre>
 
-Spark包含组件：  
+spark包含组件：  
 <pre>
-Button | ButtonBar | TabBar | ToggleButton | CheckBox | RadioButton | Scroller | HScrollBar | VScrollBar | HSlider | VSlider | DropDownList | TextArea | TextInput | ComboBox
-List | NumericStepper | Spinner | Panel | BorderContainer | TitleWindow | VideoPlayer | DataGrid
+Button | ButtonBar | TabBar | ToggleButton | CheckBox | RadioButton | Scroller | HScrollBar | VScrollBar
+HSlider | VSlider | DropDownList | TextArea | TextInput | ComboBox | List | NumericStepper | Spinner
+Panel | BorderContainer | TitleWindow | VideoPlayer | DataGrid
 </pre>
 
-Mx包含组件：  
+mx包含组件：  
 <pre>
-Accordion | AdvancedDataGrid | Alert | Border | ColorPicker | DateChooser | HScrollBar | LinkBar | LinkButton | Menu | MenuBar | PopUpButton | PopUpMenuButton | ProgressBar | TabNavigator | ToggleButtonBar | Tree | VScrollBar
+Accordion | AdvancedDataGrid | Alert | Border | ColorPicker | DateChooser | HScrollBar | LinkBar
+LinkButton | Menu | MenuBar | PopUpButton | PopUpMenuButton | ProgressBar | TabNavigator | ToggleButtonBar
+Tree | VScrollBar
 </pre>
 
-为了方便使用，将Spark组件单独剥离出来，使用方案如下：（只限于spark组件）
+为了方便使用，将Spark组件单独剥离出来，使用方案如下：（只限于spark组件）  
 引入：
 <pre>
 add silvergreen-spark-2.0.swc to libs
