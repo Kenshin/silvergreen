@@ -1,5 +1,5 @@
 ##SilverGreen
-基于Flex 4.6.x的一套Flex组件的皮肤，开发代码为SilverGreen
+基于Flex SDK 4.6.x开发的一套第三方Flex皮肤，开发代码为：SilverGreen
 
 ### 使用方法：  
 引入：  
