@@ -1,6 +1,12 @@
 ##SilverGreen
 基于Flex SDK 4.6.x开发的一套第三方Flex皮肤，开发代码为：SilverGreen
 
+### 项目主页：  
+[http://www.k-zone.cn/project/silvergreen.html](http://www.k-zone.cn/project/silvergreen.html)
+
+### Demo预览地址：  
+[http://www.k-zone.cn/silvergreen/](http://www.k-zone.cn/silvergreen/)
+
 ### 使用方法：  
 引入：  
 <pre>
@@ -55,12 +61,6 @@ add silvergreen-spark-2.0.swc to libs
 3、import com\ksria\flex\silvergreen\spark\style.css in main.mxml
    &lt;fx:Style source=&quot;com\ksria\flex\silvergreen\spark\style.css&quot; /&gt;
 </pre>
-
-### 项目主页：  
-[http://www.k-zone.cn/project/silvergreen.html](http://www.k-zone.cn/project/silvergreen.html)
-
-### Demo预览地址：  
-[http://www.k-zone.cn/silvergreen/](http://www.k-zone.cn/silvergreen/)
 
 ## 更新日志：
 version 2.0 [2011-12-19]
