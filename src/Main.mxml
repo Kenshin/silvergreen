@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               height="700" minWidth="955"
+               creationComplete="application1_creationCompleteHandler(event)"
+               >
+    <!-- 以下代码来源于网络 -->
+    <fx:Declarations>
+        <s:RadioButtonGroup id="radiogroup1"/>
+        <s:RadioButtonGroup id="radiogroup2"/>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        
+        <fx:XMLList id="treeDP2">
+            <node label="Inbox"/>
+            <node label="Calendar"/>
+            <node label="Deleted Items"/>
+        </fx:XMLList>
+        <s:RadioButtonGroup id="radiogroup3"/>
+        <fx:XMLList id="treeData">
+            <node label="Mail Box">
+                <node label="Inbox">
+                    <node label="Marketing"/>
+                    <node label="Product Management"/>
+                    <node label="Personal"/>
+                </node>
+                <node label="Outbox">
+                    <node label="Professional"/>
+                    <node label="Personal"/>
+                </node>
+                <node label="Spam"/>
+                <node label="Sent"/>
+            </node>
+        </fx:XMLList>
+        
+        <fx:XMLList id="menuXML">
+            <menuitem label="File">
+                <menuitem label="SubMenuItem A-1" enabled="False"/>
+                <menuitem label="SubMenuItem A-2">
+                    <menuitem label="MenuItem A-2-1" type="check" toggled="true"/>
+                    <menuitem label="MenuItem A-2-2" type="check" toggled="false" icon="myTopIcon"/>
+                </menuitem>
+            </menuitem>
+            <menuitem label="Edit">
+                <menuitem label="SubMenuItem D-1" type="radio" groupName="one"/>
+                <menuitem label="SubMenuItem D-2" type="radio" groupName="one" toggled="true"/>
+                <menuitem label="SubMenuItem D-3" type="radio" groupName="one"/>
+            </menuitem>
+            <menuitem label="Window">
+                <menuitem label="SubMenuItem D-1" type="radio" groupName="one"/>
+            </menuitem>
+        </fx:XMLList>
+        
+        <fx:XMLList id="dpHierarchyXML" >
+            <Region Region="Southwest">
+                <Region Region="Arizona">
+                    <Territory_Rep Territory_Rep="Barbara Jennings"
+                                   Actual="38865" Estimate="40000"/>
+                    <Territory_Rep Territory_Rep="Dana Binn"
+                                   Actual="29885" Estimate="30000"/>
+                </Region>
+                <Region Region="Central California">
+                    <Territory_Rep Territory_Rep="Joe Smith"
+                                   Actual="29134" Estimate="30000"/>
+                </Region>
+                <Region Region="Nevada">
+                    <Territory_Rep Territory_Rep="Bethany Pittman"
+                                   Actual="52888" Estimate="45000"/>
+                </Region>
+                <Region Region="Northern California">
+                    <Territory_Rep Territory_Rep="Lauren Ipsum"
+                                   Actual="38805" Estimate="40000"/>
+                    <Territory_Rep Territory_Rep="T.R. Smith"
+                                   Actual="55498" Estimate="40000"/>
+                </Region>
+                <Region Region="Southern California">
+                    <Territory_Rep Territory_Rep="Alice Treu"
+                                   Actual="44985" Estimate="45000"/>
+                    <Territory_Rep Territory_Rep="Jane Grove"
+                                   Actual="44913" Estimate="45000"/>
+                </Region>
+            </Region>
+        </fx:XMLList>
+        <mx:OLAPCube name="FlatSchemaCube" dataProvider="{flatData}" id="myMXMLCube" complete="runQuery(event);">
+            
+            <mx:OLAPDimension name="CustomerDim">
+                <mx:OLAPAttribute name="Customer" dataField="customer"/>
+                <mx:OLAPHierarchy name="CustomerHier" hasAll="true">
+                    <mx:OLAPLevel attributeName="Customer"/>
+                </mx:OLAPHierarchy>
+            </mx:OLAPDimension>
+            
+            <mx:OLAPDimension name="ProductDim">
+                <mx:OLAPAttribute name="Product" dataField="product"/>
+                <mx:OLAPHierarchy name="ProductHier" hasAll="true">
+                    <mx:OLAPLevel attributeName="Product"/>
+                </mx:OLAPHierarchy>
+            </mx:OLAPDimension>
+            
+            <mx:OLAPDimension name="QuarterDim">
+                <mx:OLAPAttribute name="Quarter" dataField="quarter"/>
+                <mx:OLAPHierarchy name="QuarterHier" hasAll="true">
+                    <mx:OLAPLevel attributeName="Quarter"/>
+                </mx:OLAPHierarchy> 
+            </mx:OLAPDimension>
+            
+            <mx:OLAPMeasure name="Revenue" 
+                            dataField="revenue" 
+                            aggregator="SUM"/>
+        </mx:OLAPCube>
+        
+    </fx:Declarations>
+	
+	<!--
+   	<fx:Style source="style.css" />
+	-->
+	
+	<s:Scroller width="100%" height="100%">
+		
+		<s:Group>
+			<s:Button x="10" y="10" width="153" height="40" label="Button" />
+			<s:CheckBox x="10" y="58" label="CheckBox"/>
+			<s:TextInput x="10" y="83" width="153" height="25" text="ui" textAlign="left"
+						 textDecoration="none"/>
+			<s:HScrollBar x="10" y="116" width="153"/>
+			<s:VScrollBar x="10" y="142" height="175"/>
+			<s:VSlider x="35" y="163" height="154"/>
+			<s:HSlider x="30" y="142" width="133"/>
+			<s:ComboBox x="10" y="348" width="152" dataProvider="{comboDP}" selectedIndex="0"/>
+			<s:DropDownList x="10" y="379" width="153" selectedIndex="1">
+				<s:dataProvider>
+					<s:ArrayCollection>
+						<fx:String>First</fx:String>
+						<fx:String>Second</fx:String>
+						<fx:String>Third</fx:String>
+					</s:ArrayCollection>
+				</s:dataProvider>
+			</s:DropDownList>
+			<s:List x="10" y="470" width="153" height="122">
+				<s:dataProvider>
+					<s:ArrayCollection>
+						<fx:String>First</fx:String>
+						<fx:String>Second</fx:String>
+						<fx:String>Third</fx:String>
+						<fx:String>First</fx:String>
+						<fx:String>Second</fx:String>
+						<fx:String>Third</fx:String>
+						<fx:String>First</fx:String>
+						<fx:String>Second</fx:String>
+						<fx:String>Third</fx:String>
+					</s:ArrayCollection>
+				</s:dataProvider>
+			</s:List>
+			<s:NumericStepper x="55" y="233" width="53"/>
+			<mx:PopUpButton id="popB" x="10" y="411" width="153" label="PopUpButton"/>
+			<mx:PopUpMenuButton id="p2"
+								itemClick="menuItemClickHandler(event);"
+								x="10" y="440" width="153" label="PopUpMenuButton">
+				<mx:dataProvider>
+					<s:ArrayCollection>
+						<fx:String>First</fx:String>
+						<fx:String>Second</fx:String>
+						<fx:String>Third</fx:String>
+					</s:ArrayCollection>
+				</mx:dataProvider>
+			</mx:PopUpMenuButton>
+			
+			<mx:ProgressBar x="10" y="698" width="153" initialize="progressbar1_initializeHandler(event)"
+							maximum="100" minimum="0" mode="manual"/>
+			<mx:ProgressBar x="10" y="739" width="152" indeterminate="false"
+							initialize="progressbar2_initializeHandler(event)" labelPlacement="center"/>
+			<mx:ProgressBar x="10" y="763" width="152" enabled="true" indeterminate="true"
+							labelPlacement="bottom"/>
+			
+			<s:Spinner x="115" y="233"/>
+			<s:TextArea x="10" y="613" width="153" height="79"/>
+			<s:ToggleButton x="55" y="264" width="107" label="Toggle Button"/>
+			<mx:VRule x="173" y="9" width="1" height="186"/>
+			<s:TitleWindow x="184" y="213" width="281" height="170" title="TitleWindow">
+			</s:TitleWindow>
+			<mx:HRule x="10" y="603" width="153" height="1"/>
+			<mx:DateField x="55" y="294" width="107" yearNavigationEnabled="true"/>
+			<mx:DateChooser x="184" y="10" width="281" allowDisjointSelection="true"
+							allowMultipleSelection="true" showToday="true" yearNavigationEnabled="true"/>
+			<mx:ColorPicker x="140" y="234"/>
+			<s:Panel x="184" y="407" width="281" height="170" title="Panel">
+				<s:controlBarContent>
+				</s:controlBarContent>
+			</s:Panel>
+			<s:DataGrid x="485" y="205" width="200" height="138" sortableColumns="true" editable="true">
+				<s:ArrayCollection>
+					<s:DataItem key="1000" name="Abrasive" price="100.11" call="false"/>
+					<s:DataItem key="1001" name="Brush" price="110.01" call="true"/>
+					<s:DataItem key="1002" name="Clamp" price="120.02" call="false"/>
+					<s:DataItem key="1003" name="Drill" price="130.03" call="true"/>
+					<s:DataItem key="1004" name="Epoxy" price="140.04" call="false"/>
+					<s:DataItem key="1005" name="File" price="150.05" call="true"/>
+					<s:DataItem key="1006" name="Gouge" price="160.06" call="false"/>
+					<s:DataItem key="1007" name="Hook" price="170.07" call="true"/>
+					<s:DataItem key="1008" name="Ink" price="180.08" call="false"/>
+					<s:DataItem key="1009" name="Jack" price="190.09" call="true"/>             
+				</s:ArrayCollection>
+			</s:DataGrid>
+			<mx:LinkButton x="10" y="321" width="152" label="LinkButton"/>
+			<s:VideoPlayer x="184" y="598" width="280" height="194"/>
+			<s:TabBar x="485" y="49" width="200" height="26" dataProvider="{viewstack1}"/>
+			<s:ButtonBar x="485" y="10" width="200" height="26" dataProvider="{viewstack1}"/>
+			<mx:ViewStack id="viewstack1" x="485" y="75" width="200" height="106">
+				<s:NavigatorContent width="100%" height="100%" label="Tab1">
+					<s:Label horizontalCenter="0" text="Tab1" verticalCenter="0"/>
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Tab2">
+					<s:Label horizontalCenter="0" text="Tab2" verticalCenter="0"/>
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Tab3">
+					<s:Label horizontalCenter="0" text="Tab3" verticalCenter="0"/>
+				</s:NavigatorContent>
+			</mx:ViewStack>
+			<s:VGroup x="55" y="168" width="108">
+				<s:RadioButton label="Button 1" groupName="radiogroup3"/>
+				<s:RadioButton label="Button 2" groupName="radiogroup3"/>
+				<s:RadioButton label="Button 3" enabled="false" groupName="radiogroup3"/>
+			</s:VGroup>
+			
+			<s:Group 
+				x="485" y="354" 
+				width="200" height="79"
+				rollOver="CursorManager.setBusyCursor();" rollOut="CursorManager.removeBusyCursor();"
+				>
+				
+				<s:Rect width="100%" height="100%">
+					<s:fill >
+						<s:SolidColor id="bgFill" color="0xf0f0f0" />
+					</s:fill>
+
+					<s:stroke>            
+						<s:SolidColorStroke id="stroke" color="0xd5d5d5"/>
+					</s:stroke>
+
+					<s:filters>
+						<s:DropShadowFilter id="dsfBg" alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" />
+					</s:filters>
+				</s:Rect>
+				
+			</s:Group>
+			
+			<mx:Tree x="485" y="450" width="200" labelField="@label" dataProvider="{treeData}" rowHeight="24">
+			</mx:Tree>
+			
+			<mx:MenuBar x="710" y="78" width="235" dataProvider="{menuXML}" labelField="@label"/>
+			
+			<mx:Accordion x="485" y="660" width="200" height="131">
+				<s:NavigatorContent width="100%" height="100%" label="Accordion Pane 1">
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Accordion Panel 2">
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Accordion Pane 3">
+				</s:NavigatorContent>
+			</mx:Accordion>
+			
+			<mx:LinkBar x="710" y="40" width="235" dataProvider="{viewstack1}">
+			</mx:LinkBar>
+
+			<mx:ToggleButtonBar x="710" y="14" width="235" dataProvider="{viewstack1}">
+			</mx:ToggleButtonBar>
+			
+			<mx:TabNavigator x="710" y="120" width="235" height="200">
+				<s:NavigatorContent width="100%" height="100%" label="Tab1">
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Tab2">
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%" height="100%" label="Tab3">
+				</s:NavigatorContent>
+			</mx:TabNavigator>
+			
+			<mx:AdvancedDataGrid id="adg1" x="710" y="538" width="235"
+								 dataProvider="{new HierarchicalData(dpHierarchyXML)}">
+				<mx:columns>
+					<mx:AdvancedDataGridColumn dataField="@Region"
+											   headerText="Region"/>
+					<mx:AdvancedDataGridColumn dataField="@Territory_Rep"
+											   headerText="Territory Rep"/>
+					<mx:AdvancedDataGridColumn dataField="@Actual"
+											   headerText="Actual"/>
+					<mx:AdvancedDataGridColumn dataField="@Estimate"
+											   headerText="Estimate"/>
+				</mx:columns>
+			</mx:AdvancedDataGrid>
+			
+			<mx:OLAPDataGrid id="myOLAPDG" x="710" y="328" width="235" height="202"/>
+			<fx:Script>
+				<![CDATA[
+					import mx.olap.IOLAPCube;
+					import mx.olap.IOLAPQuery;
+					import mx.olap.IOLAPQueryAxis;
+					import mx.olap.OLAPQuery;
+					import mx.olap.OLAPResult;
+					import mx.olap.OLAPSet;
+					import mx.rpc.AsyncResponder;
+					import mx.rpc.AsyncToken;
+					[Bindable]
+					private var flatData:ArrayCollection = new ArrayCollection(
+						[
+							{customer:"AAA", product:"ColdFusion", quarter:"Q1", revenue:210, cost:25},
+							{customer:"AAA", product:"Flex", quarter:"Q2", revenue:210, cost:25},
+							{customer:"AAA", product:"Dreamweaver", quarter:"Q3", revenue:250, cost:125},
+							{customer:"AAA", product:"Flash", quarter:"Q4", revenue:430, cost:75},
+							
+							{customer:"BBB", product:"ColdFusion", quarter:"Q2", revenue:125, cost:20},
+							{customer:"BBB", product:"Flex", quarter:"Q3", revenue:210, cost:20},
+							{customer:"BBB", product:"Dreamweaver", quarter:"Q4", revenue:320, cost:120},
+							{customer:"BBB", product:"Flash", quarter:"Q1", revenue:280, cost:70},
+							
+							{customer:"CCC", product:"ColdFusion", quarter:"Q3", revenue:375, cost:120},
+							{customer:"CCC", product:"Flex", quarter:"Q4", revenue:430, cost:120},
+							{customer:"CCC", product:"Dreamweaver", quarter:"Q1", revenue:470, cost:220},
+							{customer:"CCC", product:"Flash", quarter:"Q2", revenue:570, cost:170},
+							
+							{customer:"AAA", product:"ColdFusion", quarter:"Q4", revenue:215, cost:90},
+							{customer:"AAA", product:"Flex", quarter:"Q1", revenue:210, cost:90},
+							{customer:"AAA", product:"Dreamweaver", quarter:"Q2", revenue:175, cost:190},
+							{customer:"AAA", product:"Flash", quarter:"Q3", revenue:670, cost:75},
+							
+							{customer:"BBB", product:"ColdFusion", quarter:"Q1", revenue:175, cost:20},
+							{customer:"BBB", product:"Flex", quarter:"Q2", revenue:210, cost:20},
+							{customer:"BBB", product:"Dreamweaver",quarter:"Q3", revenue:120, cost:120},
+							{customer:"BBB", product:"Flash", quarter:"Q4", revenue:310, cost:70},
+							
+							{customer:"CCC", product:"ColdFusion", quarter:"Q1", revenue:385, cost:120},
+							{customer:"CCC", product:"Flex", quarter:"Q2", revenue:340, cost:120},
+							{customer:"CCC", product:"Dreamweaver", quarter:"Q3", revenue:470, cost:220},
+							{customer:"CCC", product:"Flash", quarter:"Q4", revenue:270, cost:170},
+							
+							{customer:"AAA", product:"ColdFusion", quarter:"Q1", revenue:100, cost:25},
+							{customer:"AAA", product:"Flex", quarter:"Q2", revenue:150, cost:25},
+							{customer:"AAA", product:"Dreamweaver", quarter:"Q3", revenue:200, cost:125},
+							{customer:"AAA", product:"Flash", quarter:"Q4", revenue:300, cost:75},
+							
+							{customer:"BBB", product:"ColdFusion", quarter:"Q2", revenue:175, cost:20},
+							{customer:"BBB", product:"Flex", quarter:"Q3", revenue:100, cost:20},
+							{customer:"BBB", product:"Dreamweaver", quarter:"Q4", revenue:270, cost:120},
+							{customer:"BBB", product:"Flash", quarter:"Q1", revenue:370, cost:70},
+							
+							{customer:"CCC", product:"ColdFusion", quarter:"Q3", revenue:410, cost:120},
+							{customer:"CCC", product:"Flex", quarter:"Q4", revenue:300, cost:320},
+							{customer:"CCC", product:"Dreamweaver", quarter:"Q1", revenue:510, cost:220},
+							{customer:"CCC", product:"Flash", quarter:"Q2", revenue:620, cost:170},
+							
+							{customer:"AAA", product:"ColdFusion", quarter:"Q4", revenue:215, cost:90},
+							{customer:"AAA", product:"Flex", quarter:"Q1", revenue:210, cost:90},
+							{customer:"AAA", product:"Dreamweaver", quarter:"Q2", revenue:175, cost:190},
+							{customer:"AAA", product:"Flash", quarter:"Q3", revenue:420, cost:75},
+							
+							{customer:"BBB", product:"ColdFusion", quarter:"Q1", revenue:240, cost:20},
+							{customer:"BBB", product:"Flex", quarter:"Q2", revenue:100, cost:20},
+							{customer:"BBB", product:"Dreamweaver", quarter:"Q3", revenue:270, cost:120},
+							{customer:"BBB", product:"Flash", quarter:"Q4", revenue:370, cost:70},
+							
+							{customer:"CCC", product:"ColdFusion", quarter:"Q1", revenue:375, cost:120},
+							{customer:"CCC", product:"Flex", quarter:"Q2", revenue:420, cost:120},
+							{customer:"CCC", product:"Dreamweaver", quarter:"Q3", revenue:680, cost:220},
+							{customer:"CCC", product:"Flash", quarter:"Q4", revenue:570, cost:170}         
+						]);
+					
+					private function creationCompleteHandler():void {
+						// You must initialize the cube before you 
+						// can execute a query on it.
+						myMXMLCube.refresh();
+					}
+					
+					// Create the OLAP query.
+					private function getQuery(cube:IOLAPCube):IOLAPQuery {
+						// Create an instance of OLAPQuery to represent the query. 
+						var query:OLAPQuery = new OLAPQuery;
+						
+						// Get the row axis from the query instance.
+						var rowQueryAxis:IOLAPQueryAxis = 
+							query.getAxis(OLAPQuery.ROW_AXIS);
+						// Create an OLAPSet instance to configure the axis.
+						var productSet:OLAPSet = new OLAPSet;
+						// Add the Product to the row to aggregate data 
+						// by the Product dimension.
+						productSet.addElements(
+							cube.findDimension("ProductDim").findAttribute("Product").children);
+						// Add the OLAPSet instance to the axis.
+						rowQueryAxis.addSet(productSet);
+						
+						// Get the column axis from the query instance, and configure it
+						// to aggregate the columns by the Quarter dimension. 
+						var colQueryAxis:IOLAPQueryAxis = 
+							query.getAxis(OLAPQuery.COLUMN_AXIS);         
+						var quarterSet:OLAPSet= new OLAPSet;
+						quarterSet.addElements(
+							cube.findDimension("QuarterDim").findAttribute("Quarter").children);
+						colQueryAxis.addSet(quarterSet);
+						
+						return query;       
+					}
+					
+					// Event handler to execute the OLAP query 
+					// after the cube completes initialization.
+					private function runQuery(event:CubeEvent):void {
+						// Get cube.
+						var cube:IOLAPCube = IOLAPCube(event.currentTarget);
+						// Create a query instance.
+						var query:IOLAPQuery = getQuery(cube);
+						// Execute the query.
+						var token:AsyncToken = cube.execute(query);
+						// Setup handlers for the query results.
+						token.addResponder(new AsyncResponder(showResult, showFault));
+					}
+					
+					// Handle a query fault.
+					private function showFault(result:Object, token:Object):void {
+						Alert.show("Error in query.");
+					}
+					
+					// Handle a successful query by passing the query results to 
+					// the OLAPDataGrid control..
+					private function showResult(result:Object, token:Object):void {
+						if (!result) {
+							Alert.show("No results from query.");
+							return;
+						}
+						myOLAPDG.dataProvider= result as OLAPResult;            
+					}
+				]]>
+			</fx:Script>
+			
+			<fx:Script>
+				<![CDATA[
+					import flash.utils.setTimeout;
+					
+					import mx.collections.ArrayCollection;
+					import mx.collections.HierarchicalData;
+					import mx.controls.*;
+					import mx.core.FlexGlobals;
+					import mx.events.*;
+					import mx.managers.CursorManager;
+					
+					import spark.components.Image;
+					import spark.primitives.BitmapImage;
+					
+					[Bindable]
+					private var comboDP:ArrayCollection = new ArrayCollection([{label:"First"}, {label:"Second"}, {label:"Third"}]);
+					
+					
+					private var myMenu:Menu;
+					
+					private function initMenu():void
+					{
+						myMenu = new Menu();
+						var dp:Object = [{label: "New Folder"}, {label: "Sent Items"}, {label: "Inbox"}];        
+						myMenu.dataProvider = dp;
+						myMenu.selectedIndex = 0;
+						myMenu.addEventListener("itemClick", itemClickHandler);      
+						popB.popUp = myMenu;
+						popB.label = "Put in: " + myMenu.dataProvider[myMenu.selectedIndex].label;
+						
+						//styleManager.loadStyleDeclarations2("style.swf");
+					}
+					
+					protected function onComplete(event:Event):void
+					{
+						trace(event);
+					}
+					
+					private function itemClickHandler(event:MenuEvent):void 
+					{
+						var label:String = event.item.label;        
+						popB.label = "Put in: " + label;
+						popB.close();
+						myMenu.selectedIndex = event.index;
+					}
+					
+					public function menuItemClickHandler(event:MenuEvent):void 
+					{
+						Alert.show("Menu label: " + event.label
+							+ "  \nmenu item index within parent menu: " + event.index, "Alert", Alert.OK|Alert.CANCEL);
+						
+						p2.label = event.label;
+					}
+					
+					protected function application1_creationCompleteHandler(event:FlexEvent):void
+					{
+						initMenu();
+						
+						myMXMLCube.refresh();
+					}
+					
+					protected function progressbar1_initializeHandler(event:FlexEvent):void
+					{
+						(event.target as ProgressBar).setProgress(50, 100);
+					}
+					
+					protected function progressbar2_initializeHandler(event:FlexEvent):void
+					{
+						(event.target as ProgressBar).setProgress(50, 100);
+					}
+					
+					
+					
+				]]>
+			</fx:Script>
+		</s:Group>
+
+	</s:Scroller>
+
+</s:Application>

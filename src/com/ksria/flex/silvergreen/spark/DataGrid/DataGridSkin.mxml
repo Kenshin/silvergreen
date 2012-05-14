@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+    xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:dataGrid="com.ksria.flex.silvergreen.spark.DataGrid.*"
+    alpha.disabled="0.5" 
+	minWidth="89" minHeight="84"
+>
+    
+    <fx:Metadata>
+		<![CDATA[
+			/** 
+			* @copy spark.skins.spark.ApplicationSkin#hostComponent
+			  @langversion 3.0
+			  @playerversion Flash 10
+			  @playerversion AIR 1.5
+			  @productversion Flex 4
+			 */
+			[HostComponent("spark.components.DataGrid")]
+		]]>
+    </fx:Metadata>
+    
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="disabled" />
+    </s:states>
+    
+    <fx:Declarations>
+        <!--- @private -->        
+        <fx:Component id="alternatingRowColorsBackground">
+            <s:Rect implements="spark.components.gridClasses.IGridVisualElement">
+                <fx:Script>
+                    <![CDATA[
+                        import spark.components.DataGrid;
+                        import spark.components.Grid;
+                        
+                        /**
+                         * @private
+                         */
+                        public function prepareGridVisualElement(grid:Grid, rowIndex:int, columnIndex:int):void
+                        {
+                            const dataGrid:DataGrid = grid.dataGrid;
+                            if (!dataGrid)
+                                return;
+                            
+                            const colors:Array = dataGrid.getStyle("alternatingRowColors");
+                            if (colors && (colors.length > 0))
+                            {
+                                dataGrid.styleManager.getColorNames(colors); // lazily replace color names with ints
+                                rowBackgroundFillColor.color = colors[rowIndex % colors.length];
+                            }
+                            else
+                            {          
+                                // This should be the same as bgFill.color.
+                                rowBackgroundFillColor.color = 0xFFFFFF;
+                            }
+                        }
+                    ]]>
+                </fx:Script>  
+                <s:fill>
+                    <!--- @private -->   
+                    <s:SolidColor id="rowBackgroundFillColor" color="0xFFFFFF"/>
+                </s:fill>
+            </s:Rect>
+        </fx:Component>
+        
+        <!--- @private -->        
+        <fx:Component id="caretIndicator">
+            <s:Rect implements="spark.components.gridClasses.IGridVisualElement">
+                <fx:Script>
+                    <![CDATA[
+                        import spark.components.DataGrid;
+                        import spark.components.Grid;
+                        
+                        /**
+                         * @private
+                         */
+                        public function prepareGridVisualElement(grid:Grid, rowIndex:int, columnIndex:int):void
+                        {
+                            const dataGrid:DataGrid = grid.dataGrid;
+                            if (!dataGrid)
+                                return;
+                            
+                            const color:uint = dataGrid.getStyle("caretColor");
+                            caretIndicatorFill.color = color;
+                        }
+                    ]]>
+                </fx:Script>
+                
+                <s:stroke>
+                    <!--- @private -->
+                    <s:SolidColorStroke id="caretIndicatorFill" color="0x0167FF" weight="1"/>
+                </s:stroke>
+            </s:Rect>
+        </fx:Component>
+        
+        <!--- @private -->
+        <fx:Component id="columnSeparator">
+            <s:Line>
+                <s:stroke>
+                    <s:SolidColorStroke color="0xE6E6E6" weight="1" caps="square"/>
+                </s:stroke>
+            </s:Line>
+        </fx:Component>
+        
+        <!--- Defines the value of the columnSeparator property for the columnHeaderGroup. -->
+        <fx:Component id="headerColumnSeparator">
+            <s:Line>
+                <s:stroke>
+                    <s:SolidColorStroke color="0x696969" weight="1" caps="square"/>
+                </s:stroke>
+            </s:Line>
+        </fx:Component>
+        
+        <!--- Defines the value of the headerRenderer property for the columnHeaderGroup. 
+              The default is spark.skins.spark.DefaultGridHeaderRenderer -->
+        <fx:Component id="headerRenderer">
+            <dataGrid:DefaultGridHeaderRenderer />
+        </fx:Component>
+        
+        <!--- @private -->
+        <fx:Component id="hoverIndicator">
+            <s:Rect implements="spark.components.gridClasses.IGridVisualElement">
+                <fx:Script>
+                    <![CDATA[
+                        import spark.components.DataGrid;
+                        import spark.components.Grid;
+                        
+                        /**
+                         * @private
+                         */
+                        public function prepareGridVisualElement(grid:Grid, rowIndex:int, columnIndex:int):void
+                        {
+                            const dataGrid:DataGrid = grid.dataGrid;
+                            if (!dataGrid)
+                                return;
+                            
+                            const color:uint = dataGrid.getStyle("rollOverColor");
+                            hoverIndicatorFill.color = color;
+                        }
+                    ]]>
+                </fx:Script>
+                
+                <s:fill>
+                    <!--- @private -->
+                    <s:SolidColor id="hoverIndicatorFill" color="0xCEDBEF"/>
+                </s:fill>
+            </s:Rect>
+        </fx:Component>
+        
+        <!--- @private -->
+        <fx:Component id="rowSeparator">
+            <s:Line>
+                <s:stroke>
+                    <s:SolidColorStroke color="0xE6E6E6" weight="1" caps="square"/>
+                </s:stroke>
+            </s:Line>
+        </fx:Component>
+        
+        <!--- @private -->
+        <fx:Component id="selectionIndicator">
+            <s:Rect implements="spark.components.gridClasses.IGridVisualElement">
+                <fx:Script>
+                    <![CDATA[
+                        import spark.components.DataGrid;
+                        import spark.components.Grid;
+                        
+                        /**
+                         * @private
+                         */
+                        public function prepareGridVisualElement(grid:Grid, rowIndex:int, columnIndex:int):void
+                        {
+                            const dataGrid:DataGrid = grid.dataGrid;
+                            if (!dataGrid)
+                                return;
+                            
+                            const color:uint = dataGrid.getStyle("selectionColor");
+                            selectionIndicatorFill.color = color;
+                        }
+                    ]]>
+                </fx:Script>
+                
+                <s:fill>
+                    <!--- @private -->
+                    <s:SolidColor id="selectionIndicatorFill" color="0xA8C6EE"/>
+                </s:fill>
+            </s:Rect>
+        </fx:Component>
+        
+        <!--- @private -->
+        <fx:Component id="editorIndicator">
+            <s:Rect>
+                <s:fill>
+                    <s:SolidColor color="0xFFFFFF"/>
+                </s:fill>
+            </s:Rect>
+        </fx:Component>
+        
+    </fx:Declarations>
+    
+    <fx:Script>
+    <![CDATA[
+        static private const exclusions:Array = ["scroller", "background", "columnHeaderGroup"];
+        static private const contentFill:Array = ["bgFill"];
+        
+        /**
+         * @private
+         */
+        override public function get colorizeExclusions():Array {return exclusions;}
+        
+        /**
+         * @private
+         */
+        override public function get contentItems():Array {return contentFill};
+        
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+        
+        /**
+         * @private
+         */
+        override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+        {
+            if (getStyle("borderVisible") == true)
+            {
+                border.visible = true;
+                background.left = background.top = background.right = background.bottom = 1;
+                scroller.minViewportInset = 1;
+            }
+            else
+            {
+                border.visible = false;
+                background.left = background.top = background.right = background.bottom = 0;
+                scroller.minViewportInset = 0;
+            }
+            
+            borderStroke.color = getStyle("borderColor");
+            borderStroke.alpha = getStyle("borderAlpha");
+            
+            super.updateDisplayList(unscaledWidth, unscaledHeight);
+        }
+    ]]>
+    </fx:Script>
+    
+    <!-- column header, content -->
+    <s:VGroup horizontalAlign="justify" gap="0" left="0" right="0" top="0" bottom="0">
+        
+        <!--- @private -->
+        <s:GridColumnHeaderGroup id="columnHeaderGroup"
+            paddingLeft="1" paddingTop="1" paddingRight="1" minHeight="21" 
+            columnSeparator="{headerColumnSeparator}"
+            headerRenderer="{headerRenderer}"/>
+
+        <s:Group height="100%">
+            
+            <!--- @private -->
+            <s:Rect id="background" left="1" right="1" top="1" bottom="1" >
+                <s:fill>
+                    <!--- Defines the color of the background. The default color is 0xFFFFFF. -->
+                    <s:SolidColor id="bgFill" color="0xFFFFFF" />
+                </s:fill>
+            </s:Rect>
+            
+            <!-- header separator, scroller and grid -->
+            <s:VGroup horizontalAlign="justify" height="100%" width="100%" gap="0">
+				
+                <!--- @private -->
+                <s:Line id="headerSeparator">
+                    <s:stroke>
+                        <s:SolidColorStroke color="0x696969" weight="1" caps="square"/>
+                    </s:stroke>
+                </s:Line>
+                
+                <!--- @private -->
+                <s:Scroller 
+					id="scroller" 
+					minViewportInset="1" 
+					hasFocusableChildren="false" 
+					height="100%" 
+				>
+                    <!--- @private -->
+                    <s:Grid id="grid" itemRenderer="spark.skins.spark.DefaultGridItemRenderer">
+                        <s:GridLayer name="backgroundLayer"/>
+                        <s:GridLayer name="selectionLayer"/>
+                        <s:GridLayer name="editorIndicatorLayer"/>                            
+                        <s:GridLayer name="rendererLayer"/>
+                        <s:GridLayer name="overlayLayer"/>
+                    </s:Grid>
+					
+                </s:Scroller>
+				
+            </s:VGroup>
+            
+        </s:Group>
+        
+    </s:VGroup>
+    
+    <!-- border -->
+    <!--- @private -->
+    <s:Rect 
+		id="border"
+		left="0" right="0" top="0" bottom="0" 
+		radiusX="3" radiusY="3"
+	>
+		
+        <s:stroke>            
+            <s:SolidColorStroke id="borderStroke" color="0xd5d5d5"/>
+        </s:stroke>
+
+		<s:filters>
+			<s:DropShadowFilter id="dsfBg" alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" />
+		</s:filters>
+	</s:Rect>
+
+</s:SparkSkin>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	minHeight="14" minWidth="60"
+    alpha.disabled="0.5"
+>
+
+    <fx:Metadata>
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.mediaClasses.ScrubBar")]
+    </fx:Metadata> 
+    
+    <fx:Script>
+        /* Define the skin elements that should not be colorized. */
+        static private const exclusions:Array = ["track", "thumb"];
+        
+        /**
+         * @private
+         */
+        override public function get colorizeExclusions():Array {return exclusions;}
+        
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+    </fx:Script>
+    
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="disabled" />
+    </s:states>
+    
+    <fx:Declarations>
+		
+        <!--- The tooltip used in the mx.controls.Slider control. 
+               To customize the DataTip's appearance, create a custom HSliderSkin class.
+		-->
+        <fx:Component id="dataTip">
+			
+           <s:DataRenderer minHeight="24" minWidth="40" y="-34">
+			   
+              <s:Rect top="0" left="0" right="0" bottom="0">
+				  
+                    <s:fill>
+                        <s:SolidColor color="0xdde5db" alpha=".9"/>
+                    </s:fill>
+					
+                    <s:filters>
+                        <s:DropShadowFilter alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" />
+                    </s:filters>
+					
+                </s:Rect>
+				
+                <s:Label 
+					id="labelDisplay" 
+					text="{ data }"
+					horizontalCenter="0" verticalCenter="1"
+					left="5" right="5" top="5" bottom="5"
+					textAlign="center" verticalAlign="middle"
+					fontWeight="normal" 
+					color="white" 
+				/>
+					
+            </s:DataRenderer>
+			
+       </fx:Component>
+	   
+    </fx:Declarations>
+    
+    <!--- The skin pat that defines the video timeline. The timeline shows the current playhead location  
+          in the video, the amount of the video previously played, and the loaded in part of the video. -->
+    <s:Button 
+		id="track" 
+		left="0" right="0" top="0" 
+		height="11"
+		skinClass="com.ksria.flex.silvergreen.spark.VideoPlayer.normal.ScrubBarTrackSkin" 
+	/>
+
+    <!--- @copy spark.components.mediaClasses.ScrubBar#loadedRangeArea -->
+    <s:Group id="loadedRangeArea" x="0" y="0" height="11" includeInLayout="false">
+    
+        <!-- inset 7 and 6 pixels because that's thumbSize/2 -->
+        <s:Group left="7" right="6" top="0" bottom="0" minWidth="0">
+        
+            <!-- fill -->
+            <s:Rect left="1" right="1" top="1" bottom="1">
+                <s:fill>
+                    <s:SolidColor color="0xD7D7D7" />
+                </s:fill>
+            </s:Rect>
+            
+            <!-- inner glow -->
+            <!-- set height to 100%, maxHeight=1, minHeight=0 b/c only want this line to show up 
+                 if there's room for it 
+			-->
+            <s:Rect left="1" top="1" bottom="1" width="100%" maxWidth="1" minWidth="0">
+                <s:fill>
+                    <s:SolidColor color="0x000000" alpha="0.12" />
+                </s:fill>
+            </s:Rect>
+			
+            <s:Rect left="2" right="1" top="1" height="100%" maxHeight="1" minHeight="0">
+                <s:fill>
+                    <s:SolidColor color="0x000000" alpha="0.12" />
+                </s:fill>
+            </s:Rect>
+            
+            <!-- black line on right -->
+            <!-- set width to 100%, maxWidth=1, minWidth=0 b/c only want this line to show up 
+                 if there's room for it 
+			-->
+            <s:Rect right="0" top="1" bottom="1" width="100%" maxWidth="1" minWidth="0">
+                <s:fill>
+                    <s:SolidColor color="0x000000" alpha=".5"/>
+                </s:fill>
+            </s:Rect>
+            
+        </s:Group>
+		
+    </s:Group>
+    
+    <!--- @copy spark.components.mediaClasses.ScrubBar#playedArea -->
+    <s:Group id="playedArea" x="0" y="0" height="11" includeInLayout="false">
+    
+        <!-- inset 7 and 6 pixels because that's thumbSize/2 -->
+        <s:Group left="7" right="6" top="0" bottom="0" minWidth="0">
+        
+            <!-- inner glow -->
+            <s:Rect left="1" right="1" top="1" bottom="1">
+                <s:fill>
+                    <s:LinearGradient rotation="90">
+                        <s:GradientEntry color="0xFEFEFE"/>
+                        <s:GradientEntry color="0xECECEC"/>
+                    </s:LinearGradient>
+                </s:fill>
+            </s:Rect>
+            
+            <!-- fill -->
+            <s:Rect left="2" right="2" top="2" bottom="2">
+                <s:fill>
+                    <s:LinearGradient rotation="90">
+                        <s:GradientEntry color="0xFFFFFF" alpha="0.85"/>
+                        <s:GradientEntry color="0xE1E1E1" alpha="0.85"/>
+                    </s:LinearGradient>
+                </s:fill>
+            </s:Rect>
+            
+            <!-- black line on right -->
+            <!-- set width to 100%, maxWidth=1, minWidth=0 b/c only want this line to show up 
+                 if there's room for it -->
+            <s:Rect right="0" top="1" bottom="1" width="100%" maxWidth="1" minWidth="0">
+                <s:fill>
+                    <s:SolidColor color="0x131313"/>
+                </s:fill>
+            </s:Rect>
+            
+        </s:Group>  
+    </s:Group>
+
+    <!--- A skin part that defines a button that can be dragged along the track to increase or decrease 
+          the playhead location in the video.   
+	-->
+    <s:Button 
+		id="thumb" 
+		x="0" y="0" 
+		width="14" height="19" 
+		includeInLayout="false"
+        skinClass="com.ksria.flex.silvergreen.spark.VideoPlayer.normal.ScrubBarThumbSkin" 
+	/>
+
+</s:SparkSkin>

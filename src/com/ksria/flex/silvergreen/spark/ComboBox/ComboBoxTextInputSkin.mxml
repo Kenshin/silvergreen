@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+    blendMode="normal"
+	alpha.disabled="0.5" alpha.disabledWithPrompt="0.5"
+>
+
+    <fx:Metadata>
+		<![CDATA[ 
+
+			/** 
+			 * @copy spark.skins.spark.ApplicationSkin#hostComponent
+			 */
+			[HostComponent("spark.components.TextInput")]
+
+		]]>
+    </fx:Metadata>
+	
+    <fx:Script>
+        private var paddingChanged:Boolean;
+        private var cornerRadius:Number = 0;
+        
+        /* Define the skin elements that should not be colorized. */
+        static private const exclusions:Array = ["background", "textDisplay", "promptDisplay"];
+
+        /**
+         * @private
+         */   
+        override public function get colorizeExclusions():Array {return exclusions;}
+        
+        /* Define the content fill items that should be colored by the "contentBackgroundColor" style. */
+        static private const contentFill:Array = [];//["bgFill"];
+
+        /**
+         *  @private
+         */
+        override public function get contentItems():Array {return contentFill};
+        
+        /**
+         *  @private
+         */
+        override protected function commitProperties():void
+        {
+            super.commitProperties();
+            
+            if (paddingChanged)
+            {
+                updatePadding();
+                paddingChanged = false;
+            }
+        }
+        
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+        
+        /**
+         *  @private
+         */
+        override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+        {
+            if (getStyle("borderVisible") == true)
+            {
+                //background.left = background.top = background.right = background.bottom = 1;
+                textDisplay.left = textDisplay.right = 1;
+                if (promptDisplay)
+                {
+                    promptDisplay.setLayoutBoundsSize(unscaledWidth - 2, unscaledHeight - 2);
+                    promptDisplay.setLayoutBoundsPosition(1, 1);
+                }
+            }
+            else
+            {
+                textDisplay.left = textDisplay.right = 0;
+                if (promptDisplay)
+                {
+                    promptDisplay.setLayoutBoundsSize(unscaledWidth, unscaledHeight);
+                    promptDisplay.setLayoutBoundsPosition(0, 0);
+                }
+            }
+            
+            super.updateDisplayList(unscaledWidth, unscaledHeight);
+        }
+
+        /**
+         *  @private
+         */
+        private function updatePadding():void
+        {
+            if (!textDisplay)
+                return;
+            
+            // Push padding styles into the textDisplay
+            var padding:Number;
+            
+            padding = getStyle("paddingLeft");
+            if (textDisplay.getStyle("paddingLeft") != padding)
+                textDisplay.setStyle("paddingLeft", padding);
+            
+            padding = getStyle("paddingTop");
+            if (textDisplay.getStyle("paddingTop") != padding)
+                textDisplay.setStyle("paddingTop", padding);
+            
+            padding = getStyle("paddingRight");
+            if (textDisplay.getStyle("paddingRight") != padding)
+                textDisplay.setStyle("paddingRight", padding);
+            
+            padding = getStyle("paddingBottom");
+            if (textDisplay.getStyle("paddingBottom") != padding)
+                textDisplay.setStyle("paddingBottom", padding);
+
+            if (!promptDisplay)
+                return;
+            
+            padding = getStyle("paddingLeft");
+            if (promptDisplay.getStyle("paddingLeft") != padding)
+                promptDisplay.setStyle("paddingLeft", padding);
+            
+            padding = getStyle("paddingTop");
+            if (promptDisplay.getStyle("paddingTop") != padding)
+                promptDisplay.setStyle("paddingTop", padding);
+            
+            padding = getStyle("paddingRight");
+            if (promptDisplay.getStyle("paddingRight") != padding)
+                promptDisplay.setStyle("paddingRight", padding);
+            
+            padding = getStyle("paddingBottom");
+            if (promptDisplay.getStyle("paddingBottom") != padding)
+                promptDisplay.setStyle("paddingBottom", padding);
+				
+			textDisplay.setStyle( "focusThickness", 0 );
+        }
+        
+        /**
+         *  @private
+         */
+        override public function styleChanged(styleProp:String):void
+        {
+            var allStyles:Boolean = !styleProp || styleProp == "styleName";
+
+            super.styleChanged(styleProp);
+            
+            if (allStyles || styleProp.indexOf("padding") == 0)
+            {
+                paddingChanged = true;
+                invalidateProperties();
+            }
+        }
+    </fx:Script>
+    
+    <fx:Script>
+        <![CDATA[
+            /** 
+             * @private 
+             */     
+            private static const focusExclusions:Array = ["textDisplay"];
+
+            /**
+             *  @private
+             */
+            override public function get focusSkinExclusions():Array { return focusExclusions;};
+        ]]>
+    </fx:Script>
+       
+    <s:states>
+        <s:State name="normal"/>
+        <s:State name="disabled" stateGroups="disabledStates"/>
+        <s:State name="normalWithPrompt"/>
+        <s:State name="disabledWithPrompt" stateGroups="disabledStates"/>
+    </s:states>
+    
+	<!-- background --> 
+	<s:Rect 
+		left="0" right="0" top="0" bottom="0" 
+		topLeftRadiusX="3" bottomLeftRadiusX="3" topRightRadiusX="0" bottomRightRadiusY="0"
+	>
+
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" />
+		</s:filters>
+
+		<s:fill>
+			<s:LinearGradient scaleX="25.5708" rotation="90">
+				<s:GradientEntry id="ge1" color="0xeeeeee" ratio="0"/>
+				<s:GradientEntry id="ge2" color="0xededed" ratio="0.5"/>
+				<s:GradientEntry id="ge3" color="0xe1e1e1" ratio="0.5"/>
+				<s:GradientEntry id="ge4" color="0xe0e0e0" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+
+		<s:stroke>
+			<s:LinearGradientStroke scaleX="25.5708" rotation="90">
+				<s:GradientEntry color="0xe5e5e5" ratio="0"/>
+				<s:GradientEntry color="0xf9f9f9" ratio="0.5"/>
+				<s:GradientEntry color="0xcccccc" ratio="0.5"/>
+				<s:GradientEntry color="0xb6b6b7" ratio="1"/>
+			</s:LinearGradientStroke>
+		</s:stroke>
+
+	</s:Rect>
+
+	<!-- board --> 
+	<s:Rect 
+		left="1" right="1" top="1" bottom="1"
+		topLeftRadiusX="3" bottomLeftRadiusX="3" topRightRadiusX="0" bottomRightRadiusY="0"
+	>
+
+		<s:stroke>
+			<s:LinearGradientStroke scaleX="25.5708" rotation="90">
+				<s:GradientEntry color="0xfefefe" ratio="0"/>
+				<s:GradientEntry color="0xfcfcfc" ratio="0.5"/>
+				<s:GradientEntry color="0xf4f4f4" ratio="0.5"/>
+				<s:GradientEntry color="0xecedec" ratio="1"/>
+			</s:LinearGradientStroke>
+		</s:stroke>
+
+	</s:Rect>
+	
+	<!-- text -->
+    <!--- @copy spark.components.supportClasses.SkinnableTextBase#textDisplay -->
+    <s:RichEditableText 
+    	id="textDisplay" 
+    	color="0x303030"
+    	verticalAlign="middle"
+		left="1" right="1" top="1" bottom="1" 
+		paddingLeft="3" paddingTop="5" paddingRight="3" paddingBottom="3" 
+		lineBreak="explicit"
+		widthInChars="10" verticalCenter="0"
+	/>
+		
+    <!--- Defines the Label that is used for prompt text. The includeInLayout property is false so the prompt text does not affect measurement. -->
+    <s:Label 
+		id="promptDisplay" 
+		maxDisplayedLines="1"
+		verticalAlign="middle"
+		mouseEnabled="false" mouseChildren="false"
+		includeIn="normalWithPrompt,disabledWithPrompt" 
+		includeInLayout="false"
+     />
+
+</s:SparkSkin>

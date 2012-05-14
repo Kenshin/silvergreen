@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	alpha.disabled=".5"
+> 
+
+    <!-- host component -->
+    <fx:Metadata>
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.mediaClasses.VolumeBar")]
+    </fx:Metadata>
+    
+    <fx:Script>
+        /* Define the skin elements that should not be colorized. */
+        static private const exclusions:Array = ["muteButton", "track", "thumb"];
+        
+        /**
+         * @private
+         */
+        override public function get colorizeExclusions():Array {return exclusions;}
+        
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+    </fx:Script>
+
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="open" />
+        <s:State name="disabled" />
+    </s:states>
+    
+    <!--- The PopUpAnchor control that contains the drop-down slider control. -->
+    <s:PopUpAnchor 
+		id="popup" 
+		displayPopUp.normal="false" displayPopUp.open="true" 
+		includeIn="open"
+        left="0" right="0" top="0" bottom="-1" 
+		popUpPosition="above" itemDestructionPolicy="auto"
+	>
+        
+        <!--- @copy spark.components.mediaClasses.VolumeBar#dropDown -->
+        <s:Group id="dropDown" width="38" height="84" horizontalCenter="0">
+        
+            <!-- dropshadow for the dropdown -->
+            <s:Rect left="0" top="0" right="0" bottom="0">
+				
+				<s:fill >
+					<s:SolidColor id="bgFill" color="0xf0f0f0" />
+				</s:fill>
+
+				<s:stroke>            
+					<s:SolidColorStroke id="stroke" color="0xd5d5d5"/>
+				</s:stroke>
+
+				<s:filters>
+					<s:DropShadowFilter id="dsfBg" alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" />
+				</s:filters>
+				
+            </s:Rect>
+			
+            <!--- The skin pat that defines the drop-down slider track.  -->
+            <s:Button 
+				id="track" 
+				horizontalCenter="0" 
+				top="10" bottom="10"
+                skinClass="com.ksria.flex.silvergreen.spark.VideoPlayer.normal.VolumeBarTrackSkin"
+			/>
+            
+            <!--- The skin pat that defines the thumb in the drop-down slider track.  -->
+            <s:Button 
+				id="thumb" 
+				horizontalCenter="0" 
+                skinClass="com.ksria.flex.silvergreen.spark.VideoPlayer.normal.VolumeBarThumbSkin" 
+			/>
+			
+        </s:Group>
+		
+    </s:PopUpAnchor>
+    
+    <!--- @copy spark.components.mediaClasses.VolumeBar#muteButton -->
+    <s:MuteButton 
+		id="muteButton" 
+		left="0" right="0" top="0" bottom="0" 
+		focusEnabled="false"
+        skinClass="com.ksria.flex.silvergreen.spark.VideoPlayer.normal.MuteButtonSkin"
+	/>
+    
+</s:SparkSkin>

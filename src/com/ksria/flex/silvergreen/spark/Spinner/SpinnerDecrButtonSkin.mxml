@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	width="18" height="16"
+	alpha.disabled="0.5"
+>
+
+    <!-- host component -->
+    <fx:Metadata>
+	    <![CDATA[ 
+
+			/** 
+			 * @copy spark.skins.default.ButtonSkin#hostComponent
+			 */
+	    	[HostComponent("spark.components.Button")]
+
+	    ]]>
+    </fx:Metadata> 
+    
+    <!-- states -->    
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over"/>
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+
+    <!-- Transition -->
+    <s:transitions>
+
+    	<s:Transition fromState="up" toState="over" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="over" toState="up" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="over" toState="down" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="down" toState="up" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    </s:transitions>
+    
+	<!-- background --> 
+	<s:Rect 
+		left="0" right="0" top="0" bottom="0" 
+		bottomRightRadiusX="3"
+	>
+		
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" strength.down="0" />
+		</s:filters>
+
+		<s:fill>
+			<s:LinearGradient scaleX="25.5708" rotation="90">
+				<s:GradientEntry id="ge1" color="0xeeeeee" color.over="0xf5f5f5" color.down="0xdde5db" ratio="0"/>
+				<s:GradientEntry id="ge2" color="0xededed" color.over="0xf3f3f2" color.down="0xd7e1d5" ratio="0.5"/>
+				<s:GradientEntry id="ge3" color="0xe1e1e1" color.over="0xefefef" color.down="0xcedccc" ratio="0.5"/>
+				<s:GradientEntry id="ge4" color="0xe0e0e0" color.over="0xebecec" color.down="0xc8d8c5" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+
+		<s:stroke>
+			<s:LinearGradientStroke scaleX="25.5708" rotation="90">
+				<s:GradientEntry color="0xe5e5e5" ratio="0"/>
+				<s:GradientEntry color="0xf9f9f9" ratio="0.5"/>
+				<s:GradientEntry color="0xcccccc" ratio="0.5"/>
+				<s:GradientEntry color="0xb6b6b7" ratio="1"/>
+			</s:LinearGradientStroke>
+		</s:stroke>
+
+	</s:Rect>
+
+	<!-- board --> 
+	<s:Rect 
+		left="1" right="1" top="1" bottom="1" 
+		bottomRightRadiusX="3"
+	>
+
+		<s:stroke>
+			<s:LinearGradientStroke scaleX="25.5708" rotation="90">
+				<s:GradientEntry color="0xfefefe" ratio="0"/>
+				<s:GradientEntry color="0xfcfcfc" ratio="0.5"/>
+				<s:GradientEntry color="0xf4f4f4" ratio="0.5"/>
+				<s:GradientEntry color="0xecedec" ratio="1"/>
+			</s:LinearGradientStroke>
+		</s:stroke>
+
+	</s:Rect>
+    
+    <!-- arrow -->
+    <!--- Defines the appearance of the down arrow. -->
+    <s:Path horizontalCenter="0" verticalCenter="0" id="arrow"
+          data="M 3.0 3.0 L 3.0 2.0 L 4.0 2.0 L 4.0 1.0 L 5.0 1.0 L 5.0 0.0 L 0.0 0.0 L 0.0 1.0 L 1.0 1.0 L 1.0 2.0 L 2.0 2.0 L 2.0 3.0 L 3.0 3.0">
+        <s:fill>
+		<!--- Defines the down arrow's fill. The default color is 0x000000. The default alpha is .8. -->
+        	<s:SolidColor id="arrowFill" color="0x696969" alpha="0.8" />
+        </s:fill>
+    </s:Path>            
+	
+</s:SparkSkin>

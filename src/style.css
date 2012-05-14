@@ -1,0 +1,625 @@
+/*
+////////////////////////////////////////////////////////////////////////////////
+//  
+//  这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+//  作者姓名：Kenshin
+//  作者博客：http://www.k-zone.cn/zblog/
+//  主页地址：http://www.k-zone.cn/project/silvergreen.html
+//  项目地址：https://github.com/kenshin/silvergreen
+//  预览地址：http://www.k-zone.cn/silvergreen/
+//  下载地址：https://github.com/kenshin/silvergreen
+//  联络邮箱：kenshin@ksria.com
+//  新浪微博：http://weibo.com/wonlen
+//  发布日期：2011年12月19日
+//  
+//  Copyright (c) 2011 www.k-zone.cn ksria.com
+//  
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of
+//  this software and associated documentation files (the "Software"), to deal in
+//  the Software without restriction, including without limitation the rights to
+//  use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+//  of the Software, and to permit persons to whom the Software is furnished to do
+//  so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//  
+//  Except as contained in this notice, the Software shall not be used in any commercial purposes.
+//  
+//  @author Kenshin
+//  @version 2.0.000
+//
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/*
+//------------------------------
+//  Namespaces
+//------------------------------
+*/
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+/*
+//------------------------------
+//  Global
+//------------------------------
+*/
+global {
+	focusThickness : 0;
+}
+
+/*
+//==========================================================================================================================
+//
+// 							************************ Spark Skins ************************
+//
+//==========================================================================================================================
+*/
+
+/*
+//------------------------------
+// ** Spark Button
+//------------------------------
+*/
+s|Button {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.Button.ButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark ButtonBar 
+//------------------------------ 
+*/ 
+s|ButtonBar {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.ButtonBar.ButtonBarSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark TabBar 
+//------------------------------ 
+*/ 
+s|TabBar {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.TabBar.TabBarSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark ToggleButton 
+//------------------------------ 
+*/ 
+s|ToggleButton {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.ToggleButton.ToggleButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark CheckBox 
+//------------------------------ 
+*/ 
+s|CheckBox {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.CheckBox.CheckBoxSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark RadioButton 
+//------------------------------ 
+*/ 
+s|RadioButton {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.RadioButton.RadioButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark Scroller 
+//------------------------------ 
+*/ 
+s|Scroller {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.ScrollBar.ScrollerBarSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark HScrollBar 
+//------------------------------ 
+*/ 
+s|HScrollBar {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.HScrollBar.HScrollBarSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark VScrollBar 
+//------------------------------ 
+*/ 
+s|VScrollBar {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.VScrollBar.VScrollBarSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark HSlider 
+//------------------------------ 
+*/ 
+s|HSlider {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.HSlider.HSliderSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark VSlider 
+//------------------------------ 
+*/ 
+s|VSlider {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.VSlider.VSliderSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark DropDownList 
+//------------------------------ 
+*/ 
+s|DropDownList {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.DropDownList.DropDownListSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark TextArea 
+//------------------------------ 
+*/ 
+s|TextArea {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.TextArea.TextAreaSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark TextInput 
+//------------------------------ 
+*/ 
+s|TextInput {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.TextInput.TextInputSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark ComboBox 
+//------------------------------ 
+*/ 
+s|ComboBox {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.ComboBox.ComboBoxSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark List 
+//------------------------------ 
+*/ 
+s|List {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.List.ListSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark NumericStepper 
+//------------------------------ 
+*/ 
+s|NumericStepper {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.NumericStepper.NumericStepperSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark Spinner 
+//------------------------------ 
+*/ 
+s|Spinner {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.Spinner.SpinnerSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark Panel 
+//------------------------------ 
+*/ 
+s|Panel {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.Panel.PanelSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark BorderContainer 
+//------------------------------ 
+*/ 
+s|BorderContainer {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.BorderContainer.BorderContainerSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark TitleWindow 
+//------------------------------ 
+*/ 
+s|TitleWindow {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.TitleWindow.TitleWindowSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark VideoPlayer 
+//------------------------------ 
+*/ 
+s|VideoPlayer {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.VideoPlayer.VideoPlayerSkin");
+}
+
+/* 
+//------------------------------ 
+//  **Spark DataGrid 
+//------------------------------ 
+*/ 
+s|DataGrid {
+	skinClass : ClassReference("com.ksria.flex.silvergreen.spark.DataGrid.DataGridSkin");
+	contentBackgroundColor:     #f0f0f0;
+	rollOverColor:              #C2D4BE;
+	selectionColor:             #d3d3d3;
+	caretColor:                 #d3d3d3;
+}
+
+/*
+//==========================================================================================================================
+//
+// 							************************ Halo Skins ************************
+//
+//==========================================================================================================================
+*/
+
+/* 
+//------------------------------ 
+//  **mx VScrollBar 
+//------------------------------ 
+*/ 
+mx|VScrollBar {
+	trackSkin: ClassReference("com.ksria.flex.silvergreen.mx.VScrollBar.VScrollTrackSkin");
+	thumbSkin: ClassReference("com.ksria.flex.silvergreen.mx.VScrollBar.VScrollThumbSkin");
+	upArrowSkin: ClassReference(null);
+	downArrowSkin: ClassReference(null);
+}
+
+/* 
+//------------------------------ 
+//  **mx HScrollBar 
+//------------------------------ 
+*/ 
+mx|HScrollBar {
+	trackSkin: ClassReference("com.ksria.flex.silvergreen.mx.HScrollBar.HScrollTrackSkin");
+	thumbSkin: ClassReference("com.ksria.flex.silvergreen.mx.HScrollBar.HScrollThumbSkin");
+	upArrowSkin: ClassReference(null);
+	downArrowSkin: ClassReference(null);
+}
+
+/* 
+//------------------------------ 
+//  **mx HRule 
+//------------------------------ 
+*/ 
+mx|HRule {
+	strokeColor : #A5A5A5;
+}
+
+/* 
+//------------------------------ 
+//  **mx VRule 
+//------------------------------ 
+*/ 
+mx|VRule {
+	strokeColor : #A5A5A5;
+}
+
+/* 
+//------------------------------ 
+//  **mx Accordion 
+//------------------------------ 
+*/ 
+mx|Accordion {
+	borderSkin: ClassReference( "com.ksria.flex.silvergreen.mx.Border.BorderSkin" );
+}
+
+/* 
+//------------------------------ 
+//  **mx AccordionHeader 
+//------------------------------ 
+*/ 
+mx|AccordionHeader {
+	skin: ClassReference( "com.ksria.flex.silvergreen.mx.Accordion.AccordionHeaderSkin" );
+}
+
+/* 
+//------------------------------ 
+//  **mx DateChooser 
+//------------------------------ 
+*/ 
+mx|DateChooser {
+	nextMonthSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserNextMonthSkin" );
+	prevMonthSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserPrevMonthSkin" );
+	nextYearSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserNextYearSkin" );
+	prevYearSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserPrevYearSkin" );
+	todayIndicatorSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserTodayIndicatorSkin" );
+	selectionIndicatorSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserSelectionIndicatorSkin" );
+	rollOverIndicatorSkin: ClassReference( "com.ksria.flex.silvergreen.mx.DateChooser.DateChooserRollOverIndicatorSkin" );
+	contentBackgroundColor : #f0f0f0;
+	cornerRadius: 3;
+	borderColor: #d5d5d5;
+	headerColors: #eeeeee, #e0e0e0;
+}
+
+/* 
+//------------------------------ 
+//  **mx ProgressBar 
+//------------------------------ 
+*/ 
+mx|ProgressBar {
+	barSkin: ClassReference("com.ksria.flex.silvergreen.mx.ProgressBar.ProgressBarSkin");
+	trackSkin: ClassReference("com.ksria.flex.silvergreen.mx.ProgressBar.ProgressBarTrackSkin");
+	indeterminateSkin: ClassReference("com.ksria.flex.silvergreen.mx.ProgressBar.ProgressIndeterminateSkin");
+	trackHeight: 15;
+}
+
+/* 
+//------------------------------ 
+//  **mx Tree 
+//------------------------------ 
+*/ 
+mx|Tree {
+	borderSkin:                 ClassReference("com.ksria.flex.silvergreen.mx.Tree.TreeBorderSkin");
+	folderOpenIcon:             Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderOpenIcon.png");
+	folderClosedIcon:           Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderClosedIcon.png");
+	defaultLeafIcon:            Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/defaultLeafIcon.png");
+	rollOverColor : #C2D4BE;
+	selectionColor : #d3d3d3;
+	/*
+	disclosureClosedIcon:       Embed(source="kingnarestyle.swf",symbol="Tree_disclosureClosedIcon");
+	disclosureOpenIcon:         Embed(source="kingnarestyle.swf",symbol="Tree_disclosureOpenIcon");
+	*/
+}
+
+/* 
+//------------------------------ 
+//  **mx Alert 
+//------------------------------ 
+*/ 
+mx|Alert {
+	borderSkin: ClassReference("com.ksria.flex.silvergreen.mx.Alert.AlertBorderSkin");
+	buttonStyleName: buttonStyleName;
+}
+
+.buttonStyleName {
+	upSkin: ClassReference("com.ksria.flex.silvergreen.mx.Alert.AlertUpButtonSkin");
+	downSkin: ClassReference("com.ksria.flex.silvergreen.mx.Alert.AlertDownButtonSkin");
+	overSkin: ClassReference("com.ksria.flex.silvergreen.mx.Alert.AlertOverButtonSkin");
+	disabledSkin: ClassReference("com.ksria.flex.silvergreen.mx.Alert.AlertDisplayButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx ToolTip 
+//------------------------------ 
+*/ 
+mx|ToolTip {
+	borderSkin: ClassReference("com.ksria.flex.silvergreen.mx.Border.BorderSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx PopUpButton 
+//------------------------------ 
+*/ 
+mx|PopUpButton {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.PopUpButton.PopUpButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx PopUpMenuButton 
+//------------------------------ 
+*/ 
+mx|PopUpMenuButton {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.PopUpMenuButton.PopUpMenuButtonSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx LinkButton 
+//------------------------------ 
+*/ 
+mx|LinkButton {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.LinkButton.LinkButtonSkin");
+	text-decoration: underline;
+}
+
+/* 
+//------------------------------ 
+//  **mx LinkBar 
+//------------------------------ 
+*/ 
+mx|LinkBar {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.LinkBar.LinkBarSkin");
+	text-decoration: underline;
+}
+
+/* 
+//------------------------------ 
+//  **mx ListBase 
+//------------------------------ 
+*/ 
+mx|ListBase {
+	borderSkin: ClassReference("com.ksria.flex.silvergreen.mx.Border.BorderSkin");
+	rollOverColor : #C2D4BE;
+	selectionColor : #d3d3d3;
+}
+
+/* 
+//------------------------------ 
+//  **mx MenuBar 
+//------------------------------ 
+*/ 
+mx|MenuBar {
+	backgroundSkin: ClassReference("com.ksria.flex.silvergreen.mx.MenuBar.MenuBarSkin");
+	itemSkin: ClassReference("com.ksria.flex.silvergreen.mx.MenuBar.MenuBarItemSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx Menu 
+//------------------------------ 
+*/ 
+mx|Menu {
+	separatorSkin: ClassReference("com.ksria.flex.silvergreen.mx.Menu.MenuSeparatorSkin");
+	checkIcon: ClassReference("com.ksria.flex.silvergreen.mx.Menu.MenuCheckSkin");
+	rollOverColor: #C2D4BE;
+}
+
+/* 
+//------------------------------ 
+//  **mx TabNavigator 
+//------------------------------ 
+*/ 
+mx|TabNavigator {
+	tabStyleName: tabStyle;
+	borderSkin: ClassReference("com.ksria.flex.silvergreen.mx.Border.BorderSkin");
+}
+
+.tabStyle {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.TabNavigator.TabNavigatorSkin");
+}
+
+/* 
+//------------------------------ 
+//  **mx ColorPicker 
+//------------------------------ 
+*/ 
+mx|ColorPicker {
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.ColorPicker.ColorPickerSkin");
+	focusAlpha: 0;
+}
+
+/* 
+//------------------------------ 
+//  **mx ToggleButtonBar 
+//------------------------------ 
+*/ 
+mx|ToggleButtonBar {
+	buttonStyleName:            middleButtonBarButton; 
+	firstButtonStyleName:       firstButtonBarButton;
+	lastButtonStyleName:        lastButtonBarButton;
+}
+
+.firstButtonBarButton { 
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.ToggleButtonBar.ToggleButtonBarFirstButtonSkin");
+}
+
+.middleButtonBarButton { 
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.ToggleButtonBar.ToggleButtonBarMiddleButtonSkin");
+}
+
+.lastButtonBarButton { 
+	skin: ClassReference("com.ksria.flex.silvergreen.mx.ToggleButtonBar.ToggleButtonBarLastButtonSkin");
+}
+
+/*
+mx|DataGrid {
+	headerColors: #eeeeee, #e0e0e0;
+}
+*/
+
+/* 
+//------------------------------ 
+//  **mx AdvancedDataGrid 
+//------------------------------ 
+*/ 
+mx|AdvancedDataGrid {
+	borderSkin:                 ClassReference("com.ksria.flex.silvergreen.mx.Border.BorderSkin");
+	
+	folderOpenIcon:             Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderOpenIcon.png");
+	folderClosedIcon:           Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderClosedIcon.png");
+	defaultLeafIcon:            Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/defaultLeafIcon.png");
+	
+	headerBackgroundSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridHBackground");
+	headerSeparatorSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridHSeparator");
+	headerSortSeparatorSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridHSeparator");
+	sortArrowSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridSortArrow");
+	columnResizeSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridColumnResize");
+	
+	rollOverColor : #C2D4BE;
+	selectionColor : #d3d3d3;
+	alternatingItemColors: #EBEBEB, #f8f8f8;
+	verticalGridLineColor: #d5d5d5;
+	caretColor : #d3d3d3;
+}
+
+/* 
+//------------------------------ 
+//  **mx AdvancedDataGridSortItemRenderer 
+//------------------------------ 
+*/ 
+mx|AdvancedDataGridSortItemRenderer {
+	color : #111111;
+}
+
+/* 
+//------------------------------ 
+//  **mx AdvancedDataGridHeaderRenderer 
+//------------------------------ 
+*/ 
+mx|AdvancedDataGridHeaderRenderer {
+	color : #111111;
+	fontWeight : bold;
+}
+
+/* 
+//------------------------------ 
+//  **mx OLAPDataGrid 
+//------------------------------ 
+*/ 
+mx|OLAPDataGrid {
+	headerSeparatorSkin: ClassReference("com.ksria.flex.silvergreen.mx.AdvancedDataGrid.AdvancedDataGridHSeparator");
+	headerColors: #eeeeee, #e0e0e0;
+	rowAxisHeaderStyleName:     rowAxisHeaderStyle;
+	columnAxisHeaderStyleName:  columnAxisHeaderStyle;
+}
+
+.rowAxisHeaderStyle {
+	color : #111111;
+	fontWeight : bold;
+}
+
+.columnAxisHeaderStyle {
+	color : #111111;
+	fontWeight : bold;
+}
+
+/*
+mx|FileSystemList {
+	borderSkin : ClassReference("com.ksria.flex.silvergreen.mx.Tree.TreeBorderSkin");
+	directoryIcon : Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderClosedIcon.png");
+	fileIcon : Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/defaultLeafIcon.png");
+	rollOverColor : #C2D4BE;
+	selectionColor : #d3d3d3;
+}
+
+mx|FileSystemDataGrid {
+	borderSkin : ClassReference("com.ksria.flex.silvergreen.mx.Tree.TreeBorderSkin");
+	directoryIcon : Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/folderClosedIcon.png");
+	fileIcon : Embed(source="com/ksria/flex/silvergreen/mx/Tree/assets/defaultLeafIcon.png");
+}
+*/

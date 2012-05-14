@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- 
+    这是一套基于Flex SDK 4.6基础上制作的关于spark/mx的自定义皮肤
+    作者姓名：Kenshin
+    作者博客：http://www.k-zone.cn/zblog/
+    主页地址：http://www.k-zone.cn/project/silvergreen.html
+    项目地址：https://github.com/kenshin/silvergreen
+    预览地址：http://www.k-zone.cn/silvergreen/
+    下载地址：https://github.com/kenshin/silvergreen
+    联络邮箱：kenshin@ksria.com
+    新浪微博：http://weibo.com/wonlen
+    发布日期：2011年12月19日
+
+    Copyright (c) 2011 www.k-zone.cn ksria.com
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is furnished to do
+	so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+	
+	Except as contained in this notice, the Software shall not be used in any commercial purposes.
+
+    @author Kenshin
+    @version 2.0
+-->
+<s:SparkSkin 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	minWidth="21" minHeight="21" 
+	alpha.disabled="0.5" alpha.selectedDisabled="0.5"
+>
+	
+	<!-- states -->
+	<s:states>
+        <s:State name="up" />
+        <s:State name="over" stateGroups="overStates" />
+        <s:State name="down" stateGroups="downStates" />
+        <s:State name="disabled" stateGroups="disabledStates" />
+        <s:State name="selectedUp" stateGroups="selectedStates, selectedUpStates" />
+        <s:State name="selectedOver" stateGroups="overStates, selectedStates" />
+        <s:State name="selectedDown" stateGroups="downStates, selectedStates" />
+        <s:State name="selectedDisabled" stateGroups="selectedUpStates, disabledStates, selectedStates" />
+	</s:states>
+
+    <!-- Transition -->
+    <s:transitions>
+
+    	<s:Transition fromState="up" toState="over" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="over" toState="up" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="over" toState="down" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="down" toState="selectedOver" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="selectedUp" toState="selectedOver" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="selectedOver" toState="selectedUp" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="selectedOver" toState="selectedDown" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    	<s:Transition fromState="selectedDown" toState="over" >
+    		<s:AnimateColor duration="500" targets="{[ ge1, ge2, ge3, ge4 ]}" />
+    	</s:Transition> 
+
+    </s:transitions>
+
+	<!-- background --> 
+	<s:Rect 
+		left="0" right="0" top="0" bottom="0" 
+		topRightRadiusX="3" bottomRightRadiusX="3"
+	>
+
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" blurX="0" blurY="0" distance="1" strength="1" strength.down="0" strength.selectedDown="0" />
+		</s:filters>
+
+		<s:fill>
+			<s:LinearGradient scaleX="25.5708" rotation="90">
+				
+				<s:GradientEntry id="ge1" 
+					color="0xeeeeee" color.selectedUp="0xdde5db" 
+					color.over="0xf5f5f5" color.selectedOver="0xC4D3C0"
+					color.down="0xdcdcdc" color.selectedDown="0xBDCEB9"
+					ratio="0"/>
+					
+				<s:GradientEntry id="ge2" 
+					color="0xededed" color.selectedUp="0xd7e1d5" 
+					color.over="0xf3f3f2" color.selectedOver="0xC5D2BB"
+					color.down="0xd9d9d9" color.selectedDown="0xB1C5A5"
+					ratio="0.5"/>
+					
+				<s:GradientEntry id="ge3" 
+					color="0xe1e1e1" color.selectedUp="0xcedccc" 
+					color.over="0xefefef" color.selectedOver="0xB6CAB3"
+					color.down="0xcacaca" color.selectedDown="0x8DAD89"
+					ratio="0.5"/>
+					
+				<s:GradientEntry id="ge4" 
+					color="0xe0e0e0" color.selectedUp="0xc8d8c5" 
+					color.over="0xebecec" color.selectedOver="0xA5BEA0"
+					color.down="0xc9c9c9" color.selectedDown="0x6A9265"
+					ratio="1"/>
+					
+			</s:LinearGradient>
+		</s:fill>
+
+	</s:Rect>
+
+	<!-- board --> 
+	<s:Rect 
+		left="1" right="1" top="1" bottom="1" 
+		topRightRadiusX="3" bottomRightRadiusX="3"
+	>
+
+		<s:stroke>
+			<s:LinearGradientStroke scaleX="25.5708" rotation="90">
+				<s:GradientEntry color="0xfefefe" ratio="0"/>
+				<s:GradientEntry color="0xfcfcfc" ratio="0.5"/>
+				<s:GradientEntry color="0xf4f4f4" ratio="0.5"/>
+				<s:GradientEntry color="0xecedec" ratio="1"/>
+			</s:LinearGradientStroke>
+		</s:stroke>
+
+	</s:Rect>
+
+	<!-- text -->
+    <!---  @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
+    <s:Label id="labelDisplay"
+             textAlign="center"
+             verticalAlign="middle"
+             maxDisplayedLines="1"
+             horizontalCenter="0" verticalCenter="1"
+             left="10" right="10" top="2" bottom="2">
+    </s:Label>
+	
+</s:SparkSkin>
