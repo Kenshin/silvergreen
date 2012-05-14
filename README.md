@@ -13,7 +13,7 @@ add silvergreen-2.0.swc to libs
 -theme ../libs/silvergreen-2.0.swc
 </pre>
 
-使用（source方案）：  
+使用（fx:Style方案）：  
 <pre>
 1、copy com\ksria\flex\silvergreen\* to src
 2、copy style.css to src folder
@@ -23,17 +23,18 @@ add silvergreen-2.0.swc to libs
 
 spark包含组件：  
 <pre>
-Button | ButtonBar | TabBar | ToggleButton | CheckBox | RadioButton | Scroller | HScrollBar | VScrollBar
-HSlider | VSlider | DropDownList | TextArea | TextInput | ComboBox | List | NumericStepper | Spinner
-Panel | BorderContainer | TitleWindow | VideoPlayer | DataGrid
+Button | ButtonBar | TabBar | ToggleButton | CheckBox | RadioButton | Scroller | HScrollBar
+VScrollBar | HSlider | VSlider | DropDownList | TextArea | TextInput | ComboBox | List
+NumericStepper | Spinner | Panel | BorderContainer | TitleWindow | VideoPlayer | DataGrid
 </pre>
 
 mx包含组件：  
 <pre>
 Accordion | AdvancedDataGrid | Alert | Border | ColorPicker | DateChooser | HScrollBar | LinkBar
-LinkButton | Menu | MenuBar | PopUpButton | PopUpMenuButton | ProgressBar | TabNavigator | ToggleButtonBar
-Tree | VScrollBar
+LinkButton | Menu | MenuBar | PopUpButton | PopUpMenuButton | ProgressBar | TabNavigator
+ToggleButtonBar | Tree | VScrollBar
 </pre>
+
 
 为了方便使用，将Spark组件单独剥离出来，使用方案如下：（只限于spark组件）  
 引入：
@@ -47,7 +48,7 @@ add silvergreen-spark-2.0.swc to libs
 -theme ../libs/silvergreen-spark-2.0.swc
 </pre>
 
-使用（source方案）：  
+使用（fx:Style方案）：  
 <pre>
 1、copy com\ksria\flex\silvergreen\spark\* to src
 2、copy style.css to src folder
