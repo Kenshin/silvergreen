@@ -10,7 +10,7 @@
 ### 使用方法：  
 引入：  
 <pre>
-add silvergreen-2.0.swc to libs
+add silvergreen-2.1.swc to libs
 </pre>
 
 使用（SWC方案）：  
@@ -63,6 +63,9 @@ add silvergreen-spark-2.0.swc to libs
 </pre>
 
 ## 更新日志：
+version 2.1 [2012-5-22]
+* 修复了一个路径错误（com/ksria/flex/skins/ → com/ksria/flex/）
+
 version 2.0 [2011-12-19]
 * 基于Flex SDK 4.6+
 * 包含了spark和mx全部的皮肤
