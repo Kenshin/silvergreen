@@ -122,7 +122,7 @@
 	<s:VGroup paddingTop="5" gap="0">
 		<mx:LinkButton label="SilverGreen - 基于Flex SDK 4.6.x开发的一套第三方Flex皮肤"/>
 		<mx:LinkButton label="作者：Kenshin" click="{ navigateToURL( new URLRequest( 'http://weibo.com/23784148' ), '_blank' ); }" />
-		<mx:LinkButton label="版本：version 2.0（2011年12月19日 更新）" />
+		<mx:LinkButton label="版本：version 2.1（2012-5-22 更新）" />
 		<mx:LinkButton label="主页：http://www.k-zone.cn/project/silvergreen.html" click="{ navigateToURL( new URLRequest( 'http://www.k-zone.cn/project/silvergreen.html' ), '_blank' ); }" />
 		<mx:LinkButton label="源码：https://github.com/kenshin/silvergreen" click="{ navigateToURL( new URLRequest( 'https://github.com/kenshin/silvergreen' ), '_blank' ); }" />
 	</s:VGroup>
